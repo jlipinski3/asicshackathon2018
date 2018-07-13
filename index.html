@@ -286,10 +286,12 @@ var state = config.defaults.state;
 			results = saved.grab();
 			display_area.empty();
 			$.each(results, function(k, v){
-				var item = $("<div/>", {data: {"clickaction": "load_results"}, text: k, class: "action_div"});
-				//var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
-				//container.append(item);
-				display_area.append(container);
+				$.each(v, function(kk, vv){
+					var item = $("<div/>", {data: {"clickaction": "load_results"}, text: kk, class: "action_div"});
+					//var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
+					//container.append(item);
+					display_area.append(container);
+				}
 			});
 		});
 		
@@ -302,9 +304,10 @@ var state = config.defaults.state;
 		
 		$(document).on("load_results", function (e, search_name) {
 			var results = saved.grab();
-			if(results[search_name])
+			var filtered = results.filter(x => Object.keys(x)[0] === search_name).pop(); //this whole thing can be done better, but don't have time
+			if(filtered[search_name])
 			{
-				state.filters = results[search_name];
+				state.filters = filtered[search_name];
 				newview.set({view: config.screens.results}); //newview has logic to kick off a results render if that specific block exists		
 			}
 		});
