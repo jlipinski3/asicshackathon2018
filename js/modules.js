@@ -74,8 +74,8 @@ var newview = (function (keep_params, content_box, default_params) {
 				if(!params.refresh){ $section.fadeIn(300); } //if this has been passed with a refresh param, wait until the location refresh to show, because it will flicker
 
 				//extra trigger stuff
-				$(".filter_results", $section).each(function () { //iterate through and trigger barcode renderings for any barcodes in this section
-					$(this).trigger("filter_products", [$(this)]);
+				$("[data-trigger]", $section).each(function () { //trigger anything using the data-trigger attribute
+					$(this).trigger($(this).data("trigger"), [$(this)]);
 				});
 				
 				title += (" - " + params.view); //compile new title

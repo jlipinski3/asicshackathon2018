@@ -142,11 +142,12 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 			
 			<section id="results" class="screen">
 				<div class="save_box">Save This Search: <input type="text" id="saved_name"> <button data-clickaction="save_search">Save</button></div>
-				<div class="filter_results grid2x2"></div>
+				<div class="grid2x2" data-trigger="filter_products"></div>
 			</section>
 
 			<section class="screen" id="saved-filters">
 				<div data-clickaction="clear_searches" class="action_div">Delete All Saved Filters</div>
+				<div data-trigger="show_saved"></div>
 			</section>
 			
 		</section>
@@ -170,7 +171,9 @@ var config = {
 	keep_params: ["style", "client_id", "view", "locale", "connection", "device_id"],
 	content_area: {},
 	screens: {
-		"start": "swiper"
+		"start": "swiper",
+		"results": "results",
+		"filters": "saved-filters"
 	}
 };
 var state = config.defaults.state;
@@ -279,11 +282,10 @@ var state = config.defaults.state;
 		$(document).on("show_saved", function (e, display_area) {
 			results = saved.grab();
 			$.each(results, function(k, v){
-				/*console.log(v.image);
-				var container = $("<div/>", {class: "box_container"});
-				var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
-				container.append(item);
-				display_area.append(container);*/
+				var item = $("<div/>", {data: {"clickaction": "load_results"}, text: k, class: "action_div"});
+				//var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
+				//container.append(item);
+				display_area.append(container);
 			});
 		});
 		
