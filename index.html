@@ -1,0 +1,320 @@
+<!DOCTYPE html lang="en">
+<head>
+<title>
+ASICS Shoeswipe
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<!-- outside library css -->
+<link rel="stylesheet" type="text/css" href="styles/font-awesome.min.css">
+
+<!-- OASIS css. goes last. -->
+<noscript><style>main #main_inside.nojs section {display: block; border-bottom: 20px solid #eeeeee; margin-bottom: 40px; padding-bottom: 40px}</style></noscript>
+<link rel="stylesheet" type="text/css" href="styles/default.css">
+<style>
+
+div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ffffff; text-shadow: 2px 2px 2px #000000; font-weight: bold; font-size: 1.5em; text-transform: uppercase; line-height: 200%}
+.filter.screen {width: 100%; padding-top: 100%; position: relative}
+.filter.screen .swiper {background: transparent no-repeat 10% 20%; background-size: 100%}
+#filter-gender-men .swiper {background-image: url(images/filter-gender-men.png)}
+#filter-gender-women .swiper {background-image: url(images/filter-gender-women.png)}
+#filter-surface-road .swiper {background-image: url(images/filter-surface-road.png)}
+#filter-surface-trail .swiper {background-image: url(images/filter-surface-trail.png)}
+#filter-palette-grey .swiper {background-image: url(images/filter-palette-grey.png)}
+#filter-palette-black .swiper {background-image: url(images/filter-palette-black.png)}
+#filter-palette-neon .swiper {background-image: url(images/filter-palette-neon.png)}
+#filter-palette-white .swiper {background-image: url(images/filter-palette-white.png)}
+#filter-palette-red .swiper {background-image: url(images/filter-palette-red.png)}
+
+.grid2x2 .box_container {width: calc(50% - 0px); padding-top: 40%; display: inline-block; position: relative; color: #ffffff; text-shadow: 2px 2px 2px #000000; font-weight: bold; font-size: 1.3em; text-transform: uppercase; line-height: 110%}
+.grid2x2 .box {background: no-repeat center center transparent; top: 0; bottom: 0; right: 0; left: 0; margin: 20px; position: absolute; background-size: 100%}
+</style>
+</head>
+<body>
+
+<div class="packaging">
+	<!--<aside>
+		<div class="leftback"></div>
+		<div class="leftfront"></div>
+	</aside>-->
+	<main>
+		<div>
+		<section id="topnav">
+			<nav class="responsive nojs">
+			<div>
+			<a href="index.html#swiper" data-show="swiper">Swiper</a><a href="index.html#saved-filters" data-show="saved-filters">Saved Filters</a><a href="index.html#results" data-show="results">Results</a><a href="#" class="icon dropdown">&#9776;</a>
+			</div>
+			</nav>
+		</section>
+		<section id="main_inside" class="nojs">
+		
+			<header>
+				<figure>
+				  <img src="images/asics_logo.png" alt="Shoeswipe" class="logo">
+				</figure>
+			</header>
+			
+			<section class="filter screen" id="swiper">
+				<div data-show="filter-gender-men" class="swiper">
+				 START >
+				</div>
+			</section>
+			
+			<section class="filter screen filter-gender" id="filter-gender-men">
+				<div data-show="filter-gender-women" class="swiper">
+				Gender: Men
+				</div>
+			</section>
+			
+			<section class="filter screen filter-gender" id="filter-gender-women">
+				<div data-show="filter-surface-road" class="swiper">
+				Gender: Women
+				</div>
+			</section>
+			
+			<section class="filter screen filter-surface" id="filter-surface-road">
+				<div data-show="filter-surface-trail" class="swiper">
+				Surface: Road
+				</div>			
+			</section>
+
+			<section class="filter screen filter-surface" id="filter-surface-trail">
+				<div data-show="filter-pronation-underpronation" class="swiper">
+				Surface: Trail
+				</div>
+			</section>
+
+			<section class="filter screen filter-pronation" id="filter-pronation-underpronation">
+				<div data-show="filter-pronation-neutral" class="swiper">
+				Pronation: Underpronation
+				</div>
+			</section>
+
+			<section class="filter screen filter-pronation" id="filter-pronation-neutral">
+				<div data-show="filter-pronation-overpronation" class="swiper">
+				Pronation: Neutral
+				</div>
+			</section>
+
+			<section class="filter screen filter-pronation" id="filter-pronation-overpronation">
+				<div data-show="filter-palette-grey" class="swiper">
+				Pronation: Overpronation
+				</div>
+			</section>
+
+			<section class="filter screen filter-palette" id="filter-palette-grey">
+				<div data-show="filter-palette-black" class="swiper">
+				Colors: Grey
+				</div>
+			</section>
+
+			<section class="filter screen filter-palette" id="filter-palette-black">
+				<div data-show="filter-palette-neon" class="swiper">
+				Colors: Black
+				</div>
+			</section>
+			
+			<section class="filter screen filter-palette" id="filter-palette-neon">
+				<div data-show="filter-palette-white" class="swiper">
+				Colors: Neon
+				</div>
+			</section>
+			
+			<section class="filter screen filter-palette" id="filter-palette-white">
+				<div data-show="filter-palette-red" class="swiper">
+				Colors: White
+				</div>
+			</section>
+			
+			<section class="filter screen filter-palette" id="filter-palette-red">
+				<div data-show="product-swipe" class="swiper">
+				Colors: Red
+				</div>
+			</section>
+			
+			<section class="filter screen" id="product-swipe">
+				<div data-show="results" class="swiper">
+				</div>
+			</section>
+			
+			<section id="results" class="screen">
+				<div class="filter_results grid2x2"></div>
+			</section>
+
+			<section class="screen" id="saved-filters">
+			</section>
+			
+		</section>
+		</div>
+		<footer id="footer">
+		</footer>
+	</main>
+</div>
+
+<!-- jquery -->
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<script>
+//constants to be used when invoking and initializing objects/functions
+//the screens are set here because some events need to proceed to particular screens based on actions
+
+var config = {
+	defaults: {
+	},
+	keep_params: ["style", "client_id", "view", "locale", "connection", "device_id"],
+	content_area: {},
+	screens: ["swiper"]
+};
+var state = {filters: {}};
+
+(function () {
+	jQuery(function ($) {
+		config.content_area.nav = $("#topnav nav"); //nav menu
+		config.content_area.sections = $("main #main_inside section"); //content area with filters
+		config.content_area.filters = $("main #main_inside section.filter"); //interactive filters
+		config.content_area.swipers = $("main #main_inside section .swiper"); //interactive filters
+		config.defaults.view = (config.content_area.nav).find("a").first().data("show"); //if no view param, show this first
+		(config.content_area.nav).removeClass("responsive").removeClass("nojs"); //remove these classes for "hamburger" menu functionality with javascript
+		//some history api assistance for back and forward buttons
+		window.onpopstate = function (event) { //"onpopstate" is fired when using the browser back and forward buttons. add a "nopush" property to state when passing to newview so the back and forward actions dont append to state, but instead allow the user to traverse existing state.
+			if (event && event.state) {
+				clone_state = $.extend({}, event.state); //must do this for IE since it doesn't allow manipulation of event.state object
+				if (clone_state.view) {
+					clone_state.nopush = true;
+				}
+				newview.set(clone_state);
+			} else if ('state' in window.history) {
+				window.location.reload();
+			} //reload if using a hard server param like "?param="
+		};
+
+		//BINDERS FOR INTERACTIVITY
+		$("#main_inside").removeClass("nojs"); //remove nojs class to adjust padding, borders, etc
+		
+		(config.content_area.swipers).swipe({
+			swipeRight: function(e) {
+				var class_prefix = "filter-"; //style class prefix when correlating json property to element
+				if(($(this).parent(".filter").attr("class")).match(new RegExp(class_prefix + '(\\S+)')))
+				{
+					var full_filter_name = ($(this).parent(".filter").attr("class")).match(new RegExp(class_prefix + '(\\S+)'))[0];
+					var filter_no_prefix = full_filter_name.replace(class_prefix, ''); //regex for separating prefix from classname
+					var filter_value = $(this).parent(".filter").attr("id").replace(full_filter_name + "-", "");
+					if(!state.filters.hasOwnProperty(filter_no_prefix))
+					{
+						state.filters[filter_no_prefix] = []; //initialize this filter array
+					}
+					
+					state.filters[filter_no_prefix].push(filter_value);
+				}
+			},
+			swipe: function(e) {
+				var next_screen = $(this).data("show");
+				
+				if(next_screen)
+				{
+					newview.set({view: next_screen}); //swipe to next screen
+				}
+			},
+			threshold: 75
+		});
+		
+		$(document).on("add_slides", function(e, add_to)
+		{
+				//TODO: create filtering
+		});
+			
+		var filtering = (function(){
+			return{
+				result_set: function(){
+					var result_set = product_data;
+					Object.keys(state.filters).forEach(function(k) {
+						var filter_pool = [];
+						if(Array.isArray(state.filters[k]))
+						{
+							for(var xx = 0; xx<state.filters[k].length; xx++)
+							{
+								Array.prototype.push.apply(filter_pool,result_set.filter(x => x[k] === state.filters[k][xx]));
+							}
+						} else if (state.filters[k] != "") {
+							Array.prototype.push.apply(filter_pool,result_set.filter(x => x[k] === state.filters[k]));
+						}
+						result_set = filter_pool; //narrow the results down
+					});
+					
+					//console.log(result_set);
+					var deduped = result_set.reduce(function(previous, current) {
+						var object = previous.filter(object => object.sku === current.sku);
+						if (object.length == 0) {
+							previous.push(current);
+						}
+						return previous;
+					}, []);
+					
+					console.log(deduped);
+					return deduped;					
+				}
+			};				
+		})();
+			
+
+		$(document).on("filter_products", function (e, display_area) {
+			results = filtering.result_set();
+			$.each(results, function(k, v){
+				console.log(v.image);
+				var container = $("<div/>", {class: "box_container"});
+				var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
+				container.append(item);
+				display_area.append(container);
+			});
+		});
+		
+		$(document).on("show_saved", function (e, display_area) {
+				display_area.append(saved.listall());
+			});
+		});
+		
+				//intercept nav clicks below to toggle the hamburger menu and to show specific content using the data-show attribute, and fire analytics if attached
+		$(document).on("click", "a, button, select, input[type=checkbox]", function (e) { //intercept anchor clicks and button clicks
+			if ($(this).hasClass("dropdown")) //the hamburger icon has the dropdown class and will collapse or expand using the responsive class on the nav
+			{
+				e.preventDefault();
+				(config.content_area.nav).toggleClass("responsive");
+			} else {
+				if ($(this).attr("data-show")) //pass the data-show active section function below
+				{
+					e.preventDefault();
+
+					newview.set({
+						view: $(this).data("show")
+					});
+				}
+				if ($(this).attr("data-clickaction")) //trigger action based on data-clickaction value, currently only used for logout
+				{
+					e.preventDefault();
+					$(document).trigger($(this).data("clickaction"), [$(this)]);
+				}
+			}
+		});
+
+		//INITIALIZE!
+		newview.set(); //call newview without params to show default content only and hide the rest. newview also has a call to re-run translations.
+	});
+})();
+
+
+</script>
+
+<!--<script src="js/init.js"></script>-->
+<script src="js/cookies.js"></script>
+<script src="js/modules.js"></script>
+      
+<!-- outside libraries -->
+<script src="js/jquery.touchSwipe.min.js"></script>
+
+<script src="js/data-products.js"></script>
+
+<!-- font download-->
+<link rel="stylesheet" type="text/css" href="styles/asics-fonts.min.css">
+</body>
+</html>
