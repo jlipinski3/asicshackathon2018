@@ -30,7 +30,7 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 .grid2x2 .box_container {width: calc(50% - 0px); padding-top: 40%; display: inline-block; position: relative; color: #ffffff; text-shadow: 2px 2px 2px #000000; font-weight: bold; font-size: 1.3em; text-transform: uppercase; line-height: 110%}
 .grid2x2 .box {background: no-repeat center center transparent; top: 0; bottom: 0; right: 0; left: 0; margin: 20px; position: absolute; background-size: 100%}
 
-.save_box {margin: auto; width: 65%; padding-top: .5em; text-transform: uppercase}
+.save_box {margin: auto; width: 65%; padding-top: .5em; text-transform: uppercase	}
 </style>
 </head>
 <body>
@@ -45,7 +45,7 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 		<section id="topnav">
 			<nav class="responsive nojs">
 			<div>
-			<a href="index.html#swiper" data-show="swiper">Swiper</a><a href="index.html#saved-filters" data-show="saved-filters">Saved Filters</a><a href="index.html#results" data-show="results">Results</a><a href="#" class="icon dropdown">&#9776;</a>
+			<a href="index.html#swiper" data-show="swiper" >Swiper</a><a href="index.html#saved-filters" data-show="saved-filters">Saved Filters</a><a href="index.html#results" data-show="results">Results</a><a href="#" class="icon dropdown">&#9776;</a>
 			</div>
 			</nav>
 		</section>
@@ -53,7 +53,7 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 		
 			<header>
 				<figure>
-				  <img src="images/asics_logo.png" alt="Shoeswipe" class="logo">
+				  <div data-clickaction="start_over"><img src="images/asics_logo.png" alt="Shoeswipe" class="logo"></div>
 				</figure>
 			</header>
 			
@@ -165,12 +165,15 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 
 var config = {
 	defaults: {
+		state: {filters: {}}
 	},
 	keep_params: ["style", "client_id", "view", "locale", "connection", "device_id"],
 	content_area: {},
-	screens: ["swiper"]
+	screens: {
+		"start": "swiper"
+	}
 };
-var state = {filters: {}};
+var state = config.defaults.state;
 
 (function () {
 	jQuery(function ($) {
@@ -284,6 +287,22 @@ var state = {filters: {}};
 			});
 		});
 		
+		$(document).on("start_over", function (e) {
+			newview.clear({ //use newview.clear to reset fields and clear any errors
+				view: config.screens.start,
+				refresh: true
+			});
+		});
+		
+		$(document).on("load_results", function (e, search_name) {
+			var results = saved.grab();
+			if(results[search_name])
+			{
+				state.filters = results[search_name];
+				newview.set({view: config.screens.results}); //newview has logic to kick off a results render if that specific block exists		
+			}
+		});
+		
 		$(document).on("save_search", function (e) {
 			if($("#saved_name").val() != "")
 			{
@@ -297,7 +316,7 @@ var state = {filters: {}};
 		});
 		
 				//intercept nav clicks below to toggle the hamburger menu and to show specific content using the data-show attribute, and fire analytics if attached
-		$(document).on("click", "a, button, select, input[type=checkbox]", function (e) { //intercept anchor clicks and button clicks
+		$(document).on("click", "a, button, select, div, input[type=checkbox]", function (e) { //intercept anchor clicks and button clicks
 			if ($(this).hasClass("dropdown")) //the hamburger icon has the dropdown class and will collapse or expand using the responsive class on the nav
 			{
 				e.preventDefault();

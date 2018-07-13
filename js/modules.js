@@ -111,7 +111,7 @@ var newview = (function (keep_params, content_box, default_params) {
 	return {
 		set: set,
 		clear: function (params) {
-			state = {}; //clear state
+			state = default_params.state; //set state to default
 			params = $.extend({}, default_params, params); //merge passed params into defaults and pass those
 			(content_box.sections).hide(); //hide before resetting screen
 			this.set(params); //reset using defaults and any manually passed params
@@ -134,11 +134,11 @@ var saved = (function () {
 			
 			var new_search = {}; //prep for pushing onto saved searches object
 			new_search[state.search_name] = state.filters;
-			Array.prototype.push.apply(cookie_data, new_search); //push current filters to saved searches object array	
+			cookie_data = cookie_data.concat(new_search);
 			
 			Cookies.set(saved_cookie, JSON.stringify(cookie_data), {
 				expires: new Date(new Date().setHours(720, 0, 0, 0))
-			}); //cookie expires in 720 hours = 30 days
+			}); //cookie expires in 720 hours = 30 days*/
 			return true;
 		} else {
 			alert("Cookies need to be enabled for this web application.");
