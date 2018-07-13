@@ -336,7 +336,7 @@ var state = config.defaults.state;
 				state.search_name = $("#saved_name").val();
 				if(saved.bake())
 				{
-					$(this).parents(".screen").addClass("saved");
+					$(this).closest(".screen").addClass("saved");
 				}
 			}
 		});
