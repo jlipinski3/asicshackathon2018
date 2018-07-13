@@ -33,6 +33,7 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 #filter-palette-neon .swiper {background-image: url(images/filter-palette-neon.png)}
 #filter-palette-white .swiper {background-image: url(images/filter-palette-white.png)}
 #filter-palette-red .swiper {background-image: url(images/filter-palette-red.png)}
+#filter-palette-blue .swiper {background-image: url(images/filter-palette-blue.png)}
 #filter-pronation-neutral .swiper {background-image: url(images/filter-pronation-neutral.jpg)}
 #filter-pronation-overpronation .swiper {background-image: url(images/filter-pronation-overpronation.jpg)}
 #filter-pronation-underpronation .swiper {background-image: url(images/filter-pronation-underpronation.jpg)}
@@ -148,8 +149,14 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 			</section>
 			
 			<section class="filter screen filter-palette" id="filter-palette-white">
-				<div data-show="filter-palette-red" class="swiper">
+				<div data-show="filter-palette-blue" class="swiper">
 				Colors: White
+				</div>
+			</section>
+			
+			<section class="filter screen filter-palette" id="filter-palette-blue">
+				<div data-show="filter-palette-red" class="swiper">
+				Colors: Blue
 				</div>
 			</section>
 			
@@ -246,14 +253,12 @@ var state = config.defaults.state;
 					
 					state.filters[filter_no_prefix].push(filter_value);
 				}
-			},
-			swipe: function(e) {
 				var next_screen = $(this).data("show");
-				
-				if(next_screen)
-				{
-					newview.set({view: next_screen}); //swipe to next screen
-				}
+				if(next_screen){newview.set({view: next_screen});} //swipe to next screen
+			},
+			swipeLeft: function(e) {
+				var next_screen = $(this).data("show");
+				if(next_screen){newview.set({view: next_screen});} //swipe to next screen
 			},
 			threshold: 75
 		});
