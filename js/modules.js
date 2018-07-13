@@ -119,20 +119,26 @@ var newview = (function (keep_params, content_box, default_params) {
 	};
 })(config.keep_params, config.content_area, config.defaults);
 
-//CREDS
+//SAVED
 //manages user access and sets/clears cookie
-var creds = (function (login_screen_id) {
+var saved = (function () {
+	var saved_cookie = "searches"; //only dealing with one cookie here
+	
 	var save_to_cookie = function () { //used for analytics tracking
 		if (Cookies.enabled) {
-			var analytics_stuff = {
-				"store-id": state.store_id,
-				"device-id": url_param("id"),
-				"build": url_param("build"),
-				"version": url_param("version")
-			}; //save to cookie because oauth redirections restart browser session
-			Cookies.set("oasis_analytics", JSON.stringify(analytics_stuff), {
-				expires: new Date(new Date().setHours(27, 0, 0, 0))
-			}); //cookie expires "27 hours from today at midnight" = tomorrow at 3am.
+			var cookie_data = [];
+			if(Cookies.get(saved_cookie) && state["search_name"]!="")
+			{
+				cookie_data = JSON.parse(Cookies.get(saved_cookie));			
+			}
+			
+			var new_search = {}; //prep for pushing onto saved searches object
+			new_search[state.search_name] = state.filters;
+			Array.prototype.push.apply(cookie_data, new_search); //push current filters to saved searches object array	
+			
+			Cookies.set(saved_cookie, JSON.stringify(cookie_data), {
+				expires: new Date(new Date().setHours(720, 0, 0, 0))
+			}); //cookie expires in 720 hours = 30 days
 			return true;
 		} else {
 			alert("Cookies need to be enabled for this web application.");
@@ -141,31 +147,21 @@ var creds = (function (login_screen_id) {
 	};
 
 	return {
-		track: save_to_cookie, //used for analytics
-		check: function () {
+		bake: save_to_cookie, //used for analytics
+		grab: function () {
 			if (Cookies.enabled) {
-				//check if "store" cookie exists and is not expired, which is set during oauth/api relay
-				return Cookies.get("store");
+				//check if cookie exists and is not expired
+				return Cookies.get(JSON.parse(saved_cookie));
 			} else {
 				alert("Cookies need to be enabled for this web application.");
 				return false;
 			}
 		},
-		destroy: function () { //expire all cookies and go to login screen
+		destroy: function (search_name) { //TODO: obviously has to be built out more. Should allow deleting of only specific searches. Right now does all.
 			if (Cookies.enabled) {
-				Cookies.expire("store", {
-					domain: env_config.cookie_domain
-				});
-				Cookies.expire("asics-idm-session", {
-					domain: env_config.cookie_domain
-				});
-				Cookies.expire("oasis_analytics", {
-					domain: env_config.cookie_domain
-				});
+				Cookies.expire(saved_cookie);
 			}
-			newview.clear({
-				view: login_screen_id
-			}); //clear state and go to employee login, regardless of cookies
+			newview.set({view: state.view}); //refresh current screen
 		}
 	};
-})(config.login_screen_id);
+})();

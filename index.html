@@ -29,6 +29,8 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 
 .grid2x2 .box_container {width: calc(50% - 0px); padding-top: 40%; display: inline-block; position: relative; color: #ffffff; text-shadow: 2px 2px 2px #000000; font-weight: bold; font-size: 1.3em; text-transform: uppercase; line-height: 110%}
 .grid2x2 .box {background: no-repeat center center transparent; top: 0; bottom: 0; right: 0; left: 0; margin: 20px; position: absolute; background-size: 100%}
+
+.save_box {margin: auto; width: 65%; padding-top: .5em; text-transform: uppercase}
 </style>
 </head>
 <body>
@@ -139,10 +141,12 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 			</section>
 			
 			<section id="results" class="screen">
+				<div class="save_box">Save This Search: <input type="text" id="saved_name"> <button data-clickaction="save_search">Save</button></div>
 				<div class="filter_results grid2x2"></div>
 			</section>
 
 			<section class="screen" id="saved-filters">
+				<div data-clickaction="clear_searches" class="action_div">Delete All Saved Filters</div>
 			</section>
 			
 		</section>
@@ -270,8 +274,26 @@ var state = {filters: {}};
 		});
 		
 		$(document).on("show_saved", function (e, display_area) {
-				display_area.append(saved.listall());
+			results = saved.grab();
+			$.each(results, function(k, v){
+				/*console.log(v.image);
+				var container = $("<div/>", {class: "box_container"});
+				var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
+				container.append(item);
+				display_area.append(container);*/
 			});
+		});
+		
+		$(document).on("save_search", function (e) {
+			if($("#saved_name").val() != "")
+			{
+				state.search_name = $("#saved_name").val();
+				saved.bake(); //store the cookie
+			}
+		});
+		
+		$(document).on("clear_searches", function (e) {
+			saved.destroy();
 		});
 		
 				//intercept nav clicks below to toggle the hamburger menu and to show specific content using the data-show attribute, and fire analytics if attached

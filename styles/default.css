@@ -110,8 +110,8 @@ main {vertical-align: top; vertical-align: top; -webkit-user-select: none; -moz-
 form {display: inline}
 input, button, select {font-family: 'Graphik', arial, sans-serif; border: none; display: block; margin-top: 1em; margin-bottom: 1em; height: 45px; background: transparent; font-size: 1em; outline: 0}
 select::-ms-expand {display: none;}
-button, input[type=submit] {cursor: pointer; background: #02C3E6; color: #001E62; padding: .5em; text-transform: uppercase; font-weight: 500; font-size: .9em; margin-left: auto; margin-right: auto; text-align: center; width: 100%; border-radius: 0px; transition: background .2s;}
-button:hover, input[type=submit]:hover {background: #57ddf5;}
+button, input[type=submit], .action_div {cursor: pointer; background: #02C3E6; color: #001E62; padding: .5em; text-transform: uppercase; font-weight: 500; font-size: .9em; margin-left: auto; margin-right: auto; text-align: center; width: 100%; border-radius: 0px; transition: background .2s;}
+button:hover, input[type=submit]:hover, .action_div:hover {background: #57ddf5;}
 button.extra_top, input.extra_top {margin-top: 2em}
 button.no_top, input.no_top {margin-top: 0px}
 button.white {background: #ffffff; border: 1px solid #001e62}
