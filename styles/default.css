@@ -83,8 +83,9 @@ main {vertical-align: top; vertical-align: top; -webkit-user-select: none; -moz-
 		@supports (display: flex) {main > div {display: flex; flex-direction: column}} /* ie doesn't contain flex within container */
 	main #main_inside {text-align: center; padding: 0px; width: 100%; margin: auto;}
 		@supports (display: flex) {main #main_inside {flex: 1}}
-	main #main_inside header {text-align: center; background: #001e62}
-	main #main_inside header img.logo {width: 10%; padding: 10px}
+	main #main_inside header {text-align: center; background: #001e62;}
+	main #main_inside header a {text-transform: uppercase; text-decoration: none; font-weight: bold}
+	main #main_inside header img.logo {width: 50%; padding: 10px}
 	main #main_inside section {border: none; color: #001e62; display: none}
 		main #main_inside section h2 {font-weight: 500; font-size: 1.1em; padding: 0px; margin: 0px}
 		main #main_inside section .top_details {margin: 20px; margin-left: 0px; margin-right: 0px}
