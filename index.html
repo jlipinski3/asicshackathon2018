@@ -339,7 +339,7 @@ var state = config.defaults.state;
 			}
 		});
 		
-		$(document).on("clear_searches", function (e) {
+		$(document).on("clear_searches", function (e, button) {
 			saved.destroy();
 		});
 		
