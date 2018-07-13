@@ -151,7 +151,8 @@ var saved = (function () {
 		grab: function () {
 			if (Cookies.enabled) {
 				//check if cookie exists and is not expired
-				return Cookies.get(saved_cookie);
+				var grab_val = Cookies.get(saved_cookie);
+				return JSON.parse(grab_val);
 			} else {
 				alert("Cookies need to be enabled for this web application.");
 				return false;
