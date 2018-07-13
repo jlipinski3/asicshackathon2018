@@ -18,6 +18,8 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 .filter.screen {width: 100%; padding-top: 100%; position: relative}
 .filter.screen .swiper {background: transparent no-repeat 10% 20%; background-size: 100%}
 .screen .action_div {width: 75%; margin: .5em auto}
+.screen .show_saved_button {display: none}
+.screen.saved .show_saved_button {display: block}
 .action_div.warning, .action_div.warning:hover {background: #cc0000; color: #ffffff}
 .action_dev.gray {background: #d0d0d0; color: #ffffff}
 .action_div.gray:hover {background: #d8d8d8}
@@ -30,6 +32,8 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 #filter-palette-neon .swiper {background-image: url(images/filter-palette-neon.png)}
 #filter-palette-white .swiper {background-image: url(images/filter-palette-white.png)}
 #filter-palette-red .swiper {background-image: url(images/filter-palette-red.png)}
+
+
 
 
 .grid2x2 .box_container {width: calc(50% - 0px); padding-top: 40%; display: inline-block; position: relative; color: #ffffff; text-shadow: 2px 2px 2px #000000; font-weight: bold; font-size: 1.3em; text-transform: uppercase; line-height: 110%}
@@ -146,7 +150,9 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 			</section>
 			
 			<section id="results" class="screen">
-				<div class="save_box">Save This Search: <input type="text" id="saved_name"> <button data-clickaction="save_search">Save</button></div>
+				<div class="save_box">Save This Search: <input type="text" id="saved_name">
+				<button data-clickaction="save_search">Save</button>
+				<button data-show="saved-filters" class="show_saved_button">Show Saved Filters</button></div>
 				<div class="grid2x2" data-trigger="filter_products"></div>
 			</section>
 
@@ -300,6 +306,8 @@ var state = config.defaults.state;
 		});
 		
 		$(document).on("start_over", function (e) {
+			$("#saved_name").val(""); //clear
+			$(".screen.saved").removeClass("saved"); //removed saved class to hide button
 			newview.clear({ //use newview.clear to reset fields and clear any errors
 				view: config.screens.start,
 				refresh: true
@@ -320,9 +328,10 @@ var state = config.defaults.state;
 			if($("#saved_name").val() != "")
 			{
 				state.search_name = $("#saved_name").val();
-				if(saved.bake()){
-					$(this); //store the cookie
-				
+				if(saved.bake())
+				{
+					$(this).parent(".screen").addClass("saved");
+				}
 			}
 		});
 		
