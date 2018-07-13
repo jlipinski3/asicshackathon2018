@@ -318,11 +318,11 @@ var state = config.defaults.state;
 			});
 		});
 		
-		$(document).on("load_results", function (e, search_name) {
+		$(document).on("load_results", function (e, clicked_button) {
 			var results = saved.grab();
+			var search_name = clicked_button.text();
 			var filtered = results.filter(x => Object.keys(x)[0] === search_name).pop(); //this whole thing can be done better, but don't have time
-			console.log(filtered);
-			console.log(search_name);
+
 			if(filtered[search_name])
 			{
 				state.filters = filtered[search_name];
