@@ -17,7 +17,8 @@ ASICS Shoeswipe
 div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ffffff; text-shadow: 2px 2px 2px #000000; font-weight: bold; font-size: 1.5em; text-transform: uppercase; line-height: 200%}
 .filter.screen {width: 100%; padding-top: 100%; position: relative}
 .filter.screen .swiper {background: transparent no-repeat 10% 20%; background-size: 100%}
-.screen > .action_div {width: 75%; margin: .5em auto}
+.screen .action_div {width: 75%; margin: .5em auto}
+.action_div.warning, .action_div.warning:hover {background: #cc0000; color: #ffffff}
 #filter-gender-men .swiper {background-image: url(images/filter-gender-men.png)}
 #filter-gender-women .swiper {background-image: url(images/filter-gender-women.png)}
 #filter-surface-road .swiper {background-image: url(images/filter-surface-road.png)}
@@ -148,7 +149,7 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 			</section>
 
 			<section class="screen" id="saved-filters">
-				<div data-clickaction="clear_searches" class="action_div">Delete All Saved Filters</div>
+				<div data-clickaction="clear_searches" class="action_div warning">Delete All Saved Filters</div>
 				<div data-trigger="show_saved"></div>
 			</section>
 			
@@ -290,7 +291,7 @@ var state = config.defaults.state;
 					var item = $("<div/>", {data: {"clickaction": "load_results"}, text: kk, class: "action_div"});
 					//var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
 					//container.append(item);
-					display_area.append(container);
+					display_area.append(item);
 				});
 			});
 		});

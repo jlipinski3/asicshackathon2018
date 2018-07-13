@@ -127,7 +127,7 @@ var saved = (function () {
 	var save_to_cookie = function () { //used for analytics tracking
 		if (Cookies.enabled) {
 			var cookie_data = [];
-			if(Cookies.get(saved_cookie) && state["search_name"]!="")
+			if(Cookies.get(saved_cookie) && state.search_name!=="")
 			{
 				cookie_data = JSON.parse(Cookies.get(saved_cookie));			
 			}
@@ -157,7 +157,7 @@ var saved = (function () {
 				return false;
 			}
 		},
-		destroy: function (search_name) { //TODO: obviously has to be built out more. Should allow deleting of only specific searches. Right now does all.
+		destroy: function () { //TODO: obviously has to be built out more. Should allow deleting of only specific searches. Right now does all.
 			if (Cookies.enabled) {
 				Cookies.expire(saved_cookie);
 			}
