@@ -272,6 +272,7 @@ var state = config.defaults.state;
 
 		$(document).on("filter_products", function (e, display_area) {
 			results = filtering.result_set();
+			display_area.empty();
 			$.each(results, function(k, v){
 				console.log(v.image);
 				var container = $("<div/>", {class: "box_container"});
@@ -283,6 +284,7 @@ var state = config.defaults.state;
 		
 		$(document).on("show_saved", function (e, display_area) {
 			results = saved.grab();
+			display_area.empty();
 			$.each(results, function(k, v){
 				var item = $("<div/>", {data: {"clickaction": "load_results"}, text: k, class: "action_div"});
 				//var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
