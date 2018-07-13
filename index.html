@@ -21,8 +21,8 @@ div.swiper {position: absolute; top: 0; bottom: 0; left: 0; right: 0; color: #ff
 .screen .show_saved_button {display: none}
 .screen.saved .show_saved_button {display: block}
 .action_div.warning, .action_div.warning:hover {background: #cc0000; color: #ffffff}
-.action_dev.gray {background: #d0d0d0; color: #ffffff}
-.action_div.gray:hover {background: #d8d8d8}
+.action_div.grey {background: #d0d0d0; color: #ffffff}
+.action_div.grey:hover {background: #d8d8d8}
 #swiper .swiper {background-image: url(images/start-screen.png)}
 #filter-gender-men .swiper {background-image: url(images/filter-gender-men.png)}
 #filter-gender-women .swiper {background-image: url(images/filter-gender-women.png)}
@@ -301,7 +301,7 @@ var state = config.defaults.state;
 			display_area.empty();
 			$.each(results, function(k, v){
 				$.each(v, function(kk, vv){
-					var item = $("<div/>", {data: {"clickaction": "load_results"}, text: kk, class: "action_div"});
+					var item = $("<div/>", {text: kk, class: "action_div"}).attr("data-clickaction", "load_results");
 					//var item = $("<div/>", {class: "box", text: v.name, css: {"background-image": "url('images/" + v.image + "')"}});
 					//container.append(item);
 					display_area.append(item);
