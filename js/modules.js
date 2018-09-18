@@ -75,7 +75,7 @@ var newview = (function (keep_params, content_box, default_params) {
 
 				//extra trigger stuff
 				$("[data-trigger]", $section).each(function () { //trigger anything using the data-trigger attribute
-					$(this).trigger($(this).data("trigger"), [$(this)]);
+					$(document).trigger($(this).data("trigger"), [$(this)]);
 				});
 				
 				title += (" - " + params.view); //compile new title

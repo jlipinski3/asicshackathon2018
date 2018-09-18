@@ -139,7 +139,7 @@ var product_data = [{
 		"name": "GT-2000",
 		"palette": "neon",
 		"pronation": "underpronation",
-		"sku": "15",
+		"sku": "16",
 		"surface": "road",
 		"tags": "minimal"
 	}, {
@@ -148,7 +148,7 @@ var product_data = [{
 		"name": "Noosa",
 		"palette": "black",
 		"pronation": "underpronation",
-		"sku": "16",
+		"sku": "17",
 		"tags": "cushioned",
 		"surface": "road"
 	}, {
@@ -157,7 +157,7 @@ var product_data = [{
 		"name": "Torrance",
 		"palette": "red",
 		"pronation": "neutral",
-		"sku": "17",
+		"sku": "18",
 		"surface": "road",
 		"tags": "minimal"
 	}
